@@ -1,6 +1,6 @@
 # jQuery Multistepform
 
-CMA multi-part form slider
+Multi-part form slider
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].
@@ -14,9 +14,7 @@ In your web page:
 <script src="jquery.js"></script>
 <script src="dist/jquery.multiStepForm.min.js"></script>
 <script>
-jQuery(function($) {
-  $.awesome(); // "awesome"
-});
+_(Coming soon)_
 </script>
 ```
 
