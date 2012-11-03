@@ -1,0 +1,28 @@
+{
+  "name": "jquery.multiStepForm",
+  "title": "jQuery Multistepform",
+  "description": "CMA multi-part form slider",
+  "version": "0.1.0",
+  "homepage": "https://github.com/nickromano/jquery.multiStepForm",
+  "author": {
+    "name": "Nick Romano",
+    "email": "nick.r.romano@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nickromano/jquery.multiStepForm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nickromano/jquery.multiStepForm/issues"
+  },
+  "licenses": [
+    {
+      "type": "GPL",
+      "url": "https://github.com/nickromano/jquery.multiStepForm/blob/master/LICENSE-GPL"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">= 1.6"
+  },
+  "keywords": []
+}
