@@ -22,4 +22,18 @@
       raises(block, [expected], [message])
   */
 
+    module('jQuery#multiStepForm', {
+        setup: function() {
+            this.elems = $('p#signup-form');
+        }
+    });
+
+    test('is available on the jquery object', 1, function() {
+        ok($.fn.multiStepForm, 'Should be accessible on a collection');
+    });
+
+    test('should be chainable', 1, function() {
+        strictEqual( this.elems.multiStepForm(), this.elems, 'it returns the jquery object' );
+    });
+
 }(jQuery));
