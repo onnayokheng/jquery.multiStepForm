@@ -1,4 +1,4 @@
-/*! jQuery Multistepform - v0.1.0 - 2012-11-03
+/*! jQuery Multistepform - v0.1.0 - 2012-11-04
 * https://github.com/nickromano/jquery.multiStepForm
 * Copyright (c) 2012 Nick Romano; Licensed GPL */
 
@@ -8,28 +8,34 @@ var multiStepForm = {
     init: function(el, config) {
 		this.el = el;
         this.$el = $(el);
+        
 		
 		this.config = $.extend({}, $.fn.multiStepForm.defaults, config);
 		
         this.container = this.$el.css({
-			'height': this.config.height,
-			'width': this.config.width,
+			'height': this.config.height + 'px',
+			'width': this.config.width + 'px',
 			'overflow': 'hidden'
         });
 
-        this.pages = this.$el.find('div');
+        this.pages = this.$el.find('section');
         this.numPages = this.pages.length;
+        
+        this.list = this.$el.find('div#slider').css({
+			'width': this.numPages * this.config.width * '1.10' + 'px' // the extra ten percent is a hack to make sure all the sections are in-line
+        });
+		this.currentPage = 0;
 
-		this.setUpCSS();
+		this.setUpPages();
     },
 
-    setUpCSS: function() {
+    setUpPages: function() {
 		var self = this;
 
 		this.pages.each(function() {
 			var page = $(this).css({
-				'height': self.config.height,
-				'width': self.config.width,
+				'height': self.config.height + 'px',
+				'width': self.config.width + 'px',
 				'display': 'inline-block',
 				'position': 'relative'
 			});
@@ -43,13 +49,12 @@ var multiStepForm = {
 		if ( page.is(this.pages.last()) ) {
 			return;
 		}
+		var self = this;
         var button = $('<button>', {
-            text: 'Next'
-            /*
+            text: 'Next',
             click: function() {
-				console.log('pressed'); 
+				self.nextPage();
             }
-            */
         });
         page.append(button).html();
 	},
@@ -58,15 +63,28 @@ var multiStepForm = {
 		if ( page.is(this.pages.first()) ) {
 			return;
 		}
+		var self = this;
         var button = $('<button>', {
-            text: 'Previous'
-            /*
+            text: 'Previous',
             click: function() {
-				console.log('pressed'); 
+				self.previousPage();
             }
-            */
         });
         page.append(button).html();
+	},
+
+	nextPage: function() {
+		this.currentPage += 1;
+		this.list.css({
+			'margin-left': -(this.currentPage * this.config.height)
+		});
+	},
+
+	previousPage: function() {
+		this.currentPage -= 1;
+		this.list.css({
+			'margin-left': -(this.currentPage * this.config.height)
+		});
 	}
 };
 
@@ -79,8 +97,8 @@ $.fn.multiStepForm = function(config) {
 };
 
 $.fn.multiStepForm.defaults = {
-    height: '300px',
-    width: '300px'
+    height: '300',
+    width: '300'
 };
 
 }(jQuery));
