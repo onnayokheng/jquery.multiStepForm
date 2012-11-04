@@ -11,21 +11,43 @@ Download the [production version][min] or the [development version][max].
 In your web page:
 
 ```html
+<!-- Full example index.html -->
+<form id="signup-form">
+    <section>
+        <label for="first">First Name:</label>
+        <input type="text" name="first" id="first" />
+        <label for="last">Last Name:</label>
+        <input type="text" name="last" id="last" />
+    </section>
+    <section>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" />
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" />
+    </section>
+    <section>
+        <label for="passsword">Password:</label>
+        <input type="password" name="passsword" id="passsword" />
+        <label for="confirm">Confirm Password:</label>
+        <input type="password" name="confirm" id="confirm" />
+        <input type="submit" value="Sign Up!" />
+    </section>
+</form>
 <script src="jquery.js"></script>
-<script src="dist/jquery.multiStepForm.min.js"></script>
+<script src="jquery.multiStepForm.min.js"></script>
 <script>
-_(Coming soon)_
+    $('#signup-form').multiStepForm();
 </script>
 ```
 
 ## Documentation
-_(Coming soon)_
+Treat each <section> tag as a page for the multi step form
 
 ## Examples
-_(Coming soon)_
+Open the index.html file in the main directory
 
 ## Release History
-_(Nothing yet)_
+11/4 Initial Release
 
 ## License
 Copyright (c) 2012 Nick Romano  

@@ -16,6 +16,11 @@ var multiStepForm = {
         
         this.config = $.extend({}, $.fn.multiStepForm.defaults, config);
         
+        this.slider = $('<div>',{
+            'id': 'slider'
+        }).html(this.$el.html());
+        this.$el.html(this.slider);
+
         this.container = this.$el.css({
             'height': this.config.height + 'px',
             'width': this.config.width + 'px',
@@ -24,11 +29,12 @@ var multiStepForm = {
 
         this.pages = this.$el.find('section');
         this.numPages = this.pages.length;
-        
-        this.list = this.$el.find('div#slider').css({
+
+        this.$el.find('#slider').css({
             'width': this.numPages * this.config.width * '1.10' + 'px' 
             // the extra ten percent is a hack to make sure all the sections are in-line
         });
+
         this.currentPage = 0;
         this.submit = this.$el.find('input[type="submit"]').hide();
 
@@ -116,14 +122,14 @@ var multiStepForm = {
 
     nextPage: function() {
         this.currentPage += 1;
-        this.list.animate({
+        this.slider.animate({
             'margin-left': -(this.currentPage * this.config.height)
         }, this.config.animate);
     },
 
     previousPage: function() {
         this.currentPage -= 1;
-        this.list.animate({
+        this.slider.animate({
             'margin-left': -(this.currentPage * this.config.height)
         }, this.config.animate);
     }
