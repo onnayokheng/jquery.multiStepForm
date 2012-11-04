@@ -2,6 +2,9 @@
 
 Multi-part form slider
 
+## Example
+JSFiddle http://jsfiddle.net/FAhMk/
+
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
@@ -11,7 +14,6 @@ Download the [production version][min] or the [development version][max].
 In your web page:
 
 ```html
-<!-- Full example index.html -->
 <form id="signup-form">
     <section>
         <label for="first">First Name:</label>
@@ -42,9 +44,6 @@ In your web page:
 
 ## Documentation
 Treat each <section> tag as a page for the multi step form
-
-## Examples
-Open the index.html file in the main directory
 
 ## Release History
 11/4 Initial Release
