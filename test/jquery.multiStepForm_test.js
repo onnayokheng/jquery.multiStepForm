@@ -24,7 +24,7 @@
 
     module('jQuery#multiStepForm', {
         setup: function() {
-            this.elems = $('div#signup-form');
+            this.elems = $('form#signup-form');
         }
     });
 
@@ -77,23 +77,35 @@
         ok($(pages[2]).find('button:contains("Previous")').length, 'previous button on last page');
     });
 
-    test('next button shows next page', 2, function() {
+    asyncTest('next button shows next page', 2, function() {
         this.elems.multiStepForm();
         var pages = this.elems.find('section');
         $(pages[0]).find('button:contains("Next")').click();
-        strictEqual( this.elems.find('#slider').first().css('margin-left'), '-300px', 'move slider to the second page');
-        $(pages[1]).find('button:contains("Next")').click();
-        strictEqual( this.elems.find('#slider').first().css('margin-left'), '-600px', 'move slider to the third page');
+        var self = this;
+        setTimeout(function(){
+            strictEqual( self.elems.find('#slider').first().css('margin-left'), '-300px', 'move slider to the second page');
+                    $(pages[1]).find('button:contains("Next")').click();
+            setTimeout(function() {
+              strictEqual( self.elems.find('#slider').first().css('margin-left'), '-600px', 'move slider to the third page');
+              start();
+            }, 500);
+        }, 500);
     });
 
-    test('previous button shows previous page', 2, function() {
+    asyncTest('previous button shows previous page', 2, function() {
         this.elems.multiStepForm();
         var pages = this.elems.find('section');
         $(pages[0]).find('button:contains("Next")').click();
         $(pages[1]).find('button:contains("Next")').click();
         $(pages[2]).find('button:contains("Previous")').click();
-        strictEqual( this.elems.find('#slider').first().css('margin-left'), '-300px', 'move slider to the second page');
-        $(pages[1]).find('button:contains("Previous")').click();
-        strictEqual( this.elems.find('#slider').first().css('margin-left'), '0px', 'move slider to the third page');
+        var self = this;
+        setTimeout(function(){
+            strictEqual( self.elems.find('#slider').first().css('margin-left'), '-300px', 'move slider to the second page');
+            $(pages[1]).find('button:contains("Previous")').click();
+            setTimeout(function() {
+              strictEqual( self.elems.find('#slider').first().css('margin-left'), '0px', 'move slider to the first page');
+              start();
+            }, 500);
+        }, 1500);
     });
 }(jQuery));

@@ -3,9 +3,23 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"0>
 
     <title>Multi Page Form Test</title>
+    <style type="text/css">
+        #signup-form {
+            border: 1px grey solid;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            padding: 4px;
+            font-size: 14px;
+            display: block;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div id="signup-form">
+    <form id="signup-form">
       <div id="slider">
         <section>
             <input type="text" />
@@ -20,11 +34,14 @@
             <input type="submit" value="Sign Up!" />
         </section>
       </div>
-    </div>
+    </form>
     <script src="libs/jquery/jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="src/jquery.multiStepForm.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
         $('#signup-form').multiStepForm();
+        $('#signup-form').on('submit', function() {
+            console.log('hi');
+        });
     </script>
 </body>
 </html>
