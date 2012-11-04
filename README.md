@@ -3,7 +3,7 @@
 Multi-part form slider
 
 ## Example
-JSFiddle http://jsfiddle.net/FAhMk/
+JSFiddle http://jsfiddle.net/nickromano/3J8FD/
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].
@@ -43,7 +43,24 @@ In your web page:
 ```
 
 ## Documentation
-Treat each <section> tag as a page for the multi step form
+Treat each ```<section>``` tag as a page for the multi step form
+
+Configurable options:
+-----------
+<table>
+    <tr>
+        <th>Option</th><th>Default setting</th><th>Usage</th>
+    </tr>
+    <tr>
+        <td>height</td><td>'300'</td><td>Height of each page in px</td>
+    </tr>
+    <tr>
+        <td>width</td><td>'300'</td><td>Width of each page in px</td>
+    </tr>
+    <tr>
+        <td>animate</td><td>'500'</td><td>Speed of the sliding animation in miliseconds</td>
+    </tr>
+</table>
 
 ## Release History
 11/4 Initial Release
