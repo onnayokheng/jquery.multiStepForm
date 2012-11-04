@@ -9,16 +9,47 @@
 (function($) {
 
 var multiStepForm = {
-    init: function() {
+    init: function(el, config) {
+		this.el = el;
+        this.$el = $(el);
+		
+		this.config = $.extend({}, $.fn.multiStepForm.defaults, config);
+		
+        this.container = this.$el.css({
+			'height': this.config.height,
+			'width': this.config.width,
+			'overflow': 'hidden'
+        });
+
+        this.pages = this.$el.find('div');
+        this.numPages = this.pages.length;
+
+		this.setUpCSS();
+    },
+
+    setUpCSS: function() {
+		var self = this;
+		this.pages.each(function() {
+			$(this).css({
+				'height': self.config.height,
+				'width': self.config.width,
+				'display': 'inline-block'
+			});
+		});
     }
 };
 
-$.fn.multiStepForm = function() {
+$.fn.multiStepForm = function(config) {
     var obj = Object.create(multiStepForm);
 
     return this.each(function() {
-        obj.init();
+        obj.init(this, config);
     });
+};
+
+$.fn.multiStepForm.defaults = {
+    height: '300px',
+    width: '300px'
 };
 
 }(jQuery));

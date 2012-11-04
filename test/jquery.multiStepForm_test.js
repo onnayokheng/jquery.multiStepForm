@@ -24,7 +24,7 @@
 
     module('jQuery#multiStepForm', {
         setup: function() {
-            this.elems = $('p#signup-form');
+            this.elems = $('div#signup-form');
         }
     });
 
@@ -34,6 +34,16 @@
 
     test('should be chainable', 1, function() {
         strictEqual( this.elems.multiStepForm(), this.elems, 'it returns the jquery object' );
+    });
+
+    test('offers a default object on multiStepForm namespace', 1, function() {
+        ok(!!$.fn.multiStepForm.defaults, 'the user can change the defaults');
+    });
+
+    test('sets default css', 2, function() {
+        this.elems.multiStepForm();
+        strictEqual( this.elems.find('div').first().css('height'), '300px', 'sets height to 300px' );
+        strictEqual( this.elems.find('div').first().css('width'), '300px', 'sets width to 300px' );
     });
 
 }(jQuery));
