@@ -26,10 +26,11 @@ var multiStepForm = {
         this.numPages = this.pages.length;
         
         this.list = this.$el.find('div#slider').css({
-            'width': this.numPages * this.config.width * '1.10' + 'px' // the extra ten percent is a hack to make sure all the sections are in-line
+            'width': this.numPages * this.config.width * '1.10' + 'px' 
+            // the extra ten percent is a hack to make sure all the sections are in-line
         });
         this.currentPage = 0;
-        this.$el.find('input[type="submit"]').hide();
+        this.submit = this.$el.find('input[type="submit"]').hide();
 
         this.setUpPages();
     },
@@ -51,7 +52,8 @@ var multiStepForm = {
 
             if ( page.is(self.pages.last()) ) {   
                 var submitButton = $('<button>', {
-                    text: 'Submit',
+                    text: self.submit.attr('value'),
+                    'id': 'submitButton',   
                     click: function(e) {
                         e.preventDefault();
                         self.$el.submit();
@@ -60,7 +62,6 @@ var multiStepForm = {
                     'position': 'absolute',
                     'bottom': '20px',
                     'right': '20px',
-                    'width': '54px',
                     'height': '30px',
                     'font-size': '14px'
                 });

@@ -108,4 +108,9 @@
             }, 500);
         }, 1500);
     });
+
+    test('new submit button has the same text as the old one', 1, function() {
+        this.elems.multiStepForm();
+        strictEqual( this.elems.find('button#submitButton').first().text(), 'Sign Up!', 'submit button has same text');
+    });
 }(jQuery));
