@@ -40,10 +40,40 @@
         ok(!!$.fn.multiStepForm.defaults, 'the user can change the defaults');
     });
 
-    test('sets default css', 2, function() {
+    test('sets default css', 4, function() {
         this.elems.multiStepForm();
+        strictEqual( this.elems.css('height'), '300px', 'sets height to 300px' );
+        strictEqual( this.elems.css('width'), '300px', 'sets width to 300px' );
         strictEqual( this.elems.find('div').first().css('height'), '300px', 'sets height to 300px' );
         strictEqual( this.elems.find('div').first().css('width'), '300px', 'sets width to 300px' );
     });
 
+    test('user can set own size', 4, function() {
+        this.elems.multiStepForm({
+            'height': '350px',
+            'width': '400px'
+        });
+        strictEqual( this.elems.css('height'), '350px', 'sets height to 400px' );
+        strictEqual( this.elems.css('width'), '400px', 'sets width to 400px' );
+        strictEqual( this.elems.find('div').first().css('height'), '350px', 'sets height to 400px' );
+        strictEqual( this.elems.find('div').first().css('width'), '400px', 'sets width to 400px' ); 
+    });
+
+    test('all pages but the last have a next button', 3, function() {
+        this.elems.multiStepForm();
+        var pages = this.elems.find('div');
+    
+        ok($(pages[0]).find('button:contains("Next")').length, 'next button on first page');
+        ok($(pages[1]).find('button:contains("Next")').length, 'next button on second page');
+        ok(!$(pages[2]).find('button:contains("Next")').length, 'no next button on last page');
+    });
+
+    test('all pages but the last have a next button', 3, function() {
+        this.elems.multiStepForm();
+        var pages = this.elems.find('div');
+    
+        ok(!$(pages[0]).find('button:contains("Previous")').length, 'no previous button on first page');
+        ok($(pages[1]).find('button:contains("Previous")').length, 'previous button on second page');
+        ok($(pages[2]).find('button:contains("Previous")').length, 'previous button on last page');
+    });
 }(jQuery));

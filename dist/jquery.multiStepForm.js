@@ -25,14 +25,49 @@ var multiStepForm = {
 
     setUpCSS: function() {
 		var self = this;
+
 		this.pages.each(function() {
-			$(this).css({
+			var page = $(this).css({
 				'height': self.config.height,
 				'width': self.config.width,
-				'display': 'inline-block'
+				'display': 'inline-block',
+				'position': 'relative'
 			});
+
+			self.setUpNextButtons(page);
+			self.setUpPreviousButtons(page);
 		});
-    }
+    },
+
+	setUpNextButtons: function(page) {
+		if ( page.is(this.pages.last()) ) {
+			return;
+		}
+        var button = $('<button>', {
+            text: 'Next'
+            /*
+            click: function() {
+				console.log('pressed'); 
+            }
+            */
+        });
+        page.append(button).html();
+	},
+
+	setUpPreviousButtons: function(page) {
+		if ( page.is(this.pages.first()) ) {
+			return;
+		}
+        var button = $('<button>', {
+            text: 'Previous'
+            /*
+            click: function() {
+				console.log('pressed'); 
+            }
+            */
+        });
+        page.append(button).html();
+	}
 };
 
 $.fn.multiStepForm = function(config) {
