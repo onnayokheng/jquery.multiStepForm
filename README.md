@@ -2,6 +2,8 @@
 
 Turn a long form into a multi page sliding form
 
+[![Build Status](https://secure.travis-ci.org/nickromano/jquery.multiStepForm.png)](http://travis-ci.org/nickromano/jquery.multiStepForm)
+
 ## Example
 JSFiddle http://jsfiddle.net/nickromano/3J8FD/
 
