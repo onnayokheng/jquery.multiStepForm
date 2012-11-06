@@ -1,6 +1,6 @@
 # jQuery Multistepform
 
-Multi-part form slider
+Turn a long form into a multi page sliding form
 
 ## Example
 JSFiddle http://jsfiddle.net/nickromano/3J8FD/
